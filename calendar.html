@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Linking external CSS file for styling -->
+    <link rel="stylesheet" type="text/css" href="calendar.css">
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+</head>
+
+<body>
+    <!-- Current logged-in user info will be displayed here -->
+    <div id="currentUser"></div>
+    
+    <!-- Event creation section (hidden by default) -->
+    <div id="eventCreator" hidden>
+        <!-- Button to toggle event creation form visibility -->
+        <button id="toggleEvents">Make Event</button>
+        
+        <!-- Event creation form (hidden by default) -->
+        <div id="eventForm" hidden>
+            <input type="hidden" id="token" value="">
+            
+            <!-- Form fields for event creation -->
+            <label for="eventName">Event Name:</label><br>
+            <input type="text" id="eventName" required><br>
+            
+            <p>Date:</p>
+            <input id="month" placeholder="MM" type="number" step="1" required>
+            <input id="day" placeholder="DD" type="number" step="1" required>
+            <input id="year" placeholder="YYYY" type="number" step="1" required>
+            
+            <p>When:</p>
+            <input id="hour" placeholder="HH" type="number" step="1" required>
+            <input id="minute" placeholder="MM" type="number" step="1" required>
+            
+            <!-- AM/PM selection -->
+            <select id="ampm">
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+            </select>
+            
+            <p>Share with User</p>
+            <input id="shareUser" placeholder="Username" type="text">
+            
+            <!-- Error message for invalid input -->
+            <p id="invalid"></p>
+            
+            <!-- Button to submit event creation -->
+            <button id="makeEvent">Update Calendar</button>
+        </div>
+    </div>
+    
+    <!-- Calendar sharing section (hidden by default) -->
+    <div id="shareCal" hidden>
+        <button id="toggleShare">Share Calendar</button>
+        
+        <!-- Form to share calendar (hidden by default) -->
+        <div id="share" hidden>
+            <input id="shareToken" type="hidden" value="">
+            <input type="text" id="calShareUser">
+            <button id="subCalShareUser">Share</button>
+            
+            <!-- Error message for invalid share -->
+            <p id="invalidShare"></p>
+        </div>
+    </div>
+    
+    <!-- Viewing shared calendars section (hidden by default) -->
+    <div id="viewCal" hidden>
+        <button id="toggleView">View Calendars</button>
+        
+        <!-- List of users who shared their calendars -->
+        <div id="sharers"></div>
+    </div>
+    
+    <!-- Login and account creation sections -->
+    <div id="in">
+        <!-- Login form -->
+        <div id="loginDiv">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+            <button id="login">Login</button>
+        </div>
+        
+        <!-- Account creation form -->
+        <div id="createDiv">
+            <label for="username">Username:</label>
+            <input type="text" name="createUsername" id="createUsername" required>
+            <label for="password">Password:</label>
+            <input type="password" name="createPassword" id="createPassword" required>
+            <button id="createUser">Create Account</button>
+        </div>
+    </div>
+    
+    <!-- Logout button (hidden by default) -->
+    <div id="logoutDiv">
+        <button id="logout" hidden>Logout</button>
+    </div>
+    
+    <!-- Calendar display section -->
+    <div id="calendar">
+        <div id="button-container">
+            <!-- Buttons to navigate through the months -->
+            <button id="prev_month_btn">Previous Month</button>
+            <button id="next_month_btn">Next Month</button>
+        </div>
+        
+        <!-- Display current date (updated by JS) -->
+        <p id="currentDate"></p>
+        
+        <!-- Weekdays row -->
+        <div class="weekdays">
+            <div>Sunday</div>
+            <div>Monday</div>
+            <div>Tuesday</div>
+            <div>Wednesday</div>
+            <div>Thursday</div>
+            <div>Friday</div>
+            <div>Saturday</div>
+        </div>
+
+        <!-- Days grid, populated dynamically by JS -->
+        <div id="days" class="grid">
+            <!-- Days will be populated by JS -->
+        </div>
+    </div>
+
+    <!-- External JS libraries and scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="calendarFunctions.js"></script>
+    <script src="calendar.js"></script>
+
+</body>
+
+</html>
